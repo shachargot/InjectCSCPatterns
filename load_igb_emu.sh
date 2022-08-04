@@ -1,1 +1,0 @@
-/usr/local/bin/igb_emu/load_igb_emu.sh
