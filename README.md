@@ -20,6 +20,7 @@ scram b -j 9
   - step3: run CSC L1 trigger emulation to get txt file. Replace the inputFiles with sample you want to process and set maxEvents to the number of events you need
   ```
   cd L1Trigger/CSCTriggerPrimitives/test
+  rm ComparatorDigi_CLCT_ME*.txt
   cmsRun runCSCTriggerPrimitiveProducer_cfg.py mc=True run3=True inputFiles="file:/eos/user/t/tahuang/RelValSamples/CMSSW_12_4_0_pre3/27a95851-6358-485b-b15b-619f3404d795.root" maxEvents=10 saveEdmOutput=False l1=True runME11ILT=True runCCLUTOTMB=True
   ```
 
