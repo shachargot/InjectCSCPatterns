@@ -180,8 +180,6 @@ void CSCMotherboard::run(const CSCWireDigiCollection* wiredc, const CSCComparato
   if (theRing == 1 && lctV.size() > 0){
       std::ofstream myfile;
       myfile.open(outfile.c_str(), std::ios::ate | std::ios::app);
-      myfile <<"CSCChamber with LCT: (end,station,ring,chamber) = "<< theEndcap 
-              <<", "<< theStation<<", "<< theRing <<", "<< theChamber << std::endl;
       for (auto lct : lctV) myfile << lct << std::endl;
       myfile.close();
   }
