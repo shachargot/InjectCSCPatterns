@@ -17,6 +17,8 @@ cp InjectCSCPatterns/CSCTriggerPrimitives/src/* L1Trigger/CSCTriggerPrimitives/s
 cp InjectCSCPatterns/CSCTriggerPrimitives/interface/*  L1Trigger/CSCTriggerPrimitives/interface
 scram b -j 9
   ```
+  One thing worth attention is that the above commands are to over-write the old files in L1Trigger/CSCTriggerPrimitives.  If L1Trigger/CSCTriggerPrimitives package is updated with some changes that InjectCSCPatterns/CSCTriggerPrimitives does not include, then over-write the old files may not work.  
+  The safe way to include printout code is applying the printout code changes to L1Trigger/CSCTriggerPrimitives by hand. The printout code changes is summarized in commit [a881941d8b459926564a0873621c55aae9090ca0](https://github.com/tahuang1991/InjectCSCPatterns/commit/a881941d8b459926564a0873621c55aae9090ca0).  What you need to do is apply the changes in CSCTriggerPrimitives/interface/CSCCathodeLCTProcessor.h, CSCTriggerPrimitives/src/CSCCathodeLCTProcessor.cc, CSCTriggerPrimitives/src/CSCMotherboard.cc, CSCTriggerPrimitives/src/CSCGEMMotherboard.cc to the corresponding files under L1Trigger/CSCTriggerPrimitives/
   - step3: run CSC L1 trigger emulation to get txt file. Replace the inputFiles with sample you want to process and set maxEvents to the number of events you need
   ```
   cd L1Trigger/CSCTriggerPrimitives/test
@@ -35,7 +37,7 @@ Three example txt files from 10 events are included under data/
 Everytime you run above program,  it would append the new printouts to the exist output files. Make sure that old files are removed if you want to creat new txt files
 
 ## Txt file from CSC L1 trigger emulator conventions
-The typical printout from one chamber with comparator digi is showed in the following:
+The typical printout for one chamber with comparator digi from one event is showed in the following:
 
 Start with "CSCChamber with Comparatordigi:" + detector information (endcap=1 means postive endcap and =2 means negative endcap)
 >```
@@ -67,4 +69,5 @@ LCT part: LCTs in this chamber, up to two LCTs per BX,  ranked by BX
 
 ## Generate txt file with GEMCode
 
+To be included as an optional way to dump comparator digis and CLCT+LCTs to txt file  from GEMCode package. 
 
