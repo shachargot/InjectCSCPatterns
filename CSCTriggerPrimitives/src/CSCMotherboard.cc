@@ -2,6 +2,8 @@
 #include <iostream>
 #include <memory>
 
+// PatternInjectionTest print comparator digi
+#include <fstream>
 // Default values of configuration parameters.
 const unsigned int CSCMotherboard::def_mpc_block_me1a = 1;
 const unsigned int CSCMotherboard::def_alct_trig_enable = 0;
@@ -143,6 +145,9 @@ void CSCMotherboard::run(const CSCWireDigiCollection* wiredc, const CSCComparato
   alctProc->setCSCGeometry(cscGeometry_);
   clctProc->setCSCGeometry(cscGeometry_);
 
+  // Step 2b: encode high multiplicity bits (independent of LCT construction)
+  encodeHighMultiplicityBits();
+
   // set CCLUT parameters if necessary
   if (runCCLUT_) {
     clctProc->setESLookupTables(lookupTableCCLUT_);
@@ -152,8 +157,14 @@ void CSCMotherboard::run(const CSCWireDigiCollection* wiredc, const CSCComparato
   alctV = alctProc->run(wiredc);  // run anodeLCT
   clctV = clctProc->run(compdc);  // run cathodeLCT
 
-  // Step 2b: encode high multiplicity bits (independent of LCT construction)
-  encodeHighMultiplicityBits();
+  // PatternInjectionTest print comparator digi
+  std::string outfile;
+  if (theRing == 1){
+      if (theStation == 1) outfile = "ComparatorDigi_CLCT_ME11.txt";
+      else if (theStation == 2) outfile = "ComparatorDigi_CLCT_ME21.txt";
+      else  outfile = "ComparatorDigi_CLCT_ME3141.txt";
+      clctProc->dumpComparatorDigi(outfile);
+  }
 
   // if there are no ALCTs and no CLCTs, it does not make sense to run this TMB
   if (alctV.empty() and clctV.empty())
@@ -164,6 +175,14 @@ void CSCMotherboard::run(const CSCWireDigiCollection* wiredc, const CSCComparato
 
   // Step 4: Select at most 2 LCTs per BX
   selectLCTs();
+
+  // PatternInjectionTest print comparator digi
+  if (theRing == 1 && lctV.size() > 0){
+      std::ofstream myfile;
+      myfile.open(outfile.c_str(), std::ios::ate | std::ios::app);
+      for (auto lct : lctV) myfile << lct << std::endl;
+      myfile.close();
+  }
 }
 
 void CSCMotherboard::matchALCTCLCT() {

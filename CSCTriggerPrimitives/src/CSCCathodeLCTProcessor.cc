@@ -3,6 +3,10 @@
 #include <iomanip>
 #include <memory>
 
+// PatternInjectionTest print comparator digi
+#include <fstream>
+#include <algorithm>
+
 // Default values of configuration parameters.
 const unsigned int CSCCathodeLCTProcessor::def_fifo_tbins = 12;
 const unsigned int CSCCathodeLCTProcessor::def_fifo_pretrig = 7;
@@ -170,6 +174,40 @@ void CSCCathodeLCTProcessor::checkConfigParameters() {
   CSCBaseboard::checkConfigParameters(min_separation, max_min_separation, def_min_separation, "min_separation");
   CSCBaseboard::checkConfigParameters(
       tmb_l1a_window_size, max_tmb_l1a_window_size, def_tmb_l1a_window_size, "tmb_l1a_window_size");
+}
+
+// PatternInjectionTest print comparator digi
+void CSCCathodeLCTProcessor::dumpComparatorDigi(std::string filename){
+  if (theRing == 1){
+      std::ofstream myfile;
+      myfile.open(filename.c_str(), std::ios::ate | std::ios::app);
+      std::vector<int> halfStripTimes[CSCConstants::NUM_LAYERS][CSCConstants::MAX_NUM_HALF_STRIPS_RUN2_TRIGGER];
+      readComparatorDigis(halfStripTimes);
+      bool hasDigi = false;
+      for (int bx = 0; bx < CSCConstants::MAX_CLCT_TBINS; bx++) {
+          for (int i_layer = 0; i_layer < CSCConstants::NUM_LAYERS; i_layer++) {
+              for (int hs = 0; hs < CSCConstants::MAX_NUM_HALF_STRIPS_RUN2_TRIGGER; hs++){
+                  //if (!halfStripTimes[i_layer][hs].empty() && halfStripTimes[i_layer][hs][0] == bx){
+                  if (std::find(halfStripTimes[i_layer][hs].begin(), halfStripTimes[i_layer][hs].end(), bx) != halfStripTimes[i_layer][hs].end()){
+                      if (!hasDigi){
+                          myfile <<"CSCChamber with Comparatordigi: (end,station,ring,chamber) = "<< theEndcap 
+                              <<", "<< theStation<<", "<< theRing <<", "<< theChamber << std::endl;
+                          hasDigi = true;
+                      }
+                      myfile <<"Comparatordigi BX "<< bx <<" Layer "<< i_layer <<" halfstrip "<< hs << std::endl;
+                  }
+              } // end of hs loop
+          }//end of i_layer loop
+      }//end of bx loop
+
+      for (int bx = 0; bx < CSCConstants::MAX_CLCT_TBINS; bx++) {
+          if (bestCLCT[bx].isValid())   myfile << bestCLCT[bx] << std::endl;
+          if (secondCLCT[bx].isValid()) myfile << secondCLCT[bx] << std::endl;
+      }
+
+      myfile.close();
+  }
+
 }
 
 void CSCCathodeLCTProcessor::clear() {

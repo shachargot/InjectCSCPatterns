@@ -1,4 +1,5 @@
 #include <memory>
+#include <fstream>
 
 #include "L1Trigger/CSCTriggerPrimitives/interface/CSCGEMMotherboard.h"
 CSCGEMMotherboard::CSCGEMMotherboard(unsigned endcap,
@@ -99,6 +100,15 @@ void CSCGEMMotherboard::run(const CSCWireDigiCollection* wiredc,
 
   // Step 2b: encode high multiplicity bits (independent of LCT construction)
   encodeHighMultiplicityBits();
+  
+  // PatternInjectionTest print comparator digi
+  std::string outfile;
+  if (theRing == 1){
+      if (theStation == 1) outfile = "ComparatorDigi_CLCT_ME11.txt";
+      else if (theStation == 2) outfile = "ComparatorDigi_CLCT_ME21.txt";
+      else  outfile = "ComparatorDigi_CLCT_ME3141.txt";
+      clctProc->dumpComparatorDigi(outfile);
+  }
 
   // if there are no ALCTs and no CLCTs, do not run the ALCT-CLCT correlation
   if (alctV.empty() and clctV.empty())
@@ -123,6 +133,14 @@ void CSCGEMMotherboard::run(const CSCWireDigiCollection* wiredc,
 
   // Step 5: Select at most 2 LCTs per BX
   selectLCTs();
+
+  // PatternInjectionTest print comparator digi
+  if (theRing == 1){
+      std::ofstream myfile;
+      myfile.open(outfile.c_str(), std::ios::ate | std::ios::app);
+      for (auto lct : lctV) myfile << lct << std::endl;
+      myfile.close();
+  }
 }
 
 void CSCGEMMotherboard::matchALCTCLCTGEM() {
@@ -171,13 +189,6 @@ void CSCGEMMotherboard::matchALCTCLCTGEM() {
       continue;
     if (!build_lct_from_alct_gem_ and !bestCLCT.isValid())
       continue;
-
-    /*std::cout << "" << std::endl;
-    std::cout << "BestALCT = " << bestALCT << std::endl;
-    std::cout << "SecondALCT = " << secondALCT << std::endl;
-    std::cout << "BestCLCT = " << bestCLCT << std::endl;
-    std::cout << "SecondCLCT = " << secondCLCT << std::endl;
-    std::cout << "" << std::endl;*/
 
     // ALCT + CLCT + GEM
 
@@ -333,28 +344,42 @@ void CSCGEMMotherboard::matchALCTCLCTGEM() {
     // CASE => bestALCT, secondALCT, bestCLCT, secondCLCT are valid
     if (bestALCT.isValid() and secondALCT.isValid() and bestCLCT.isValid() and secondCLCT.isValid()) {
       CSCCorrelatedLCTDigi lctbb, lctbs, lctsb, lctss;
+
+      // compute LCT bestA-bestC
       if (LCTbestAbestCgem.isValid())
         lctbb = LCTbestAbestCgem;
       else if (LCTbestAbestC.isValid())
         lctbb = LCTbestAbestC;
+
+      // compute LCT bestA-secondC
       if (LCTbestAsecondCgem.isValid())
         lctbs = LCTbestAsecondCgem;
       else if (LCTbestAsecondC.isValid())
         lctbs = LCTbestAsecondC;
-      if (LCTsecondAbestCgem.isValid())
-        lctsb = LCTsecondAbestCgem;
-      else if (LCTsecondAbestC.isValid())
-        lctsb = LCTsecondAbestC;
-      if (LCTsecondAsecondCgem.isValid())
-        lctss = LCTsecondAsecondCgem;
-      else if (LCTsecondAsecondC.isValid())
-        lctss = LCTsecondAsecondC;
 
       if (lctbb.getQuality() >= lctbs.getQuality()) {
+        // push back LCT bestA-bestC
         selectedLCTs.push_back(lctbb);
+
+        // compute LCT secondA-secondC
+        if (LCTsecondAsecondCgem.isValid())
+          lctss = LCTsecondAsecondCgem;
+        else if (LCTsecondAsecondC.isValid())
+          lctss = LCTsecondAsecondC;
+
+        // push back LCT secondA-secondC
         selectedLCTs.push_back(lctss);
-      } else if (lctbb.getQuality() < lctbs.getQuality()) {
+      } else {
+        // push back LCT bestA-secondC
         selectedLCTs.push_back(lctbs);
+
+        // compute LCT secondA-bestC
+        if (LCTsecondAbestCgem.isValid())
+          lctsb = LCTsecondAbestCgem;
+        else if (LCTsecondAbestC.isValid())
+          lctsb = LCTsecondAbestC;
+
+        // push back LCT secondA-bestC
         selectedLCTs.push_back(lctsb);
       }
 
@@ -378,12 +403,12 @@ void CSCGEMMotherboard::correlateLCTsGEM(const CSCALCTDigi& ALCT,
                                          CSCCorrelatedLCTDigi& lct) const {
   // Sanity checks on ALCT, CLCT, GEM clusters
   if (!ALCT.isValid()) {
-    // edm::LogError("CSCGEMMotherboard") << "Best ALCT invalid in correlateLCTsGEM!";
+    LogTrace("CSCGEMMotherboard") << "Best ALCT invalid in correlateLCTsGEM";
     return;
   }
 
   if (!CLCT.isValid()) {
-    // edm::LogError("CSCGEMMotherboard") << "Best CLCT invalid in correlateLCTsGEM!";
+    LogTrace("CSCGEMMotherboard") << "Best CLCT invalid in correlateLCTsGEM";
     return;
   }
 
@@ -408,7 +433,7 @@ void CSCGEMMotherboard::correlateLCTsGEM(const CSCALCTDigi& ALCT,
                                          CSCCorrelatedLCTDigi& lct) const {
   // Sanity checks on ALCT, CLCT
   if (!ALCT.isValid() or (ALCT.getQuality() == 0 and drop_low_quality_alct_)) {
-    // edm::LogError("CSCGEMMotherboard") << "Best ALCT invalid in correlateLCTsGEM!";
+    LogTrace("CSCGEMMotherboard") << "Best ALCT invalid in correlateLCTsGEM";
     return;
   }
 
@@ -417,7 +442,7 @@ void CSCGEMMotherboard::correlateLCTsGEM(const CSCALCTDigi& ALCT,
     dropLowQualityCLCT = drop_low_quality_clct_me1a_;
 
   if (!CLCT.isValid() or (CLCT.getQuality() <= 3 and dropLowQualityCLCT)) {
-    // edm::LogError("CSCGEMMotherboard") << "Best CLCT invalid in correlateLCTsGEM!";
+    LogTrace("CSCGEMMotherboard") << "Best CLCT invalid in correlateLCTsGEM";
     return;
   }
 
@@ -437,7 +462,7 @@ void CSCGEMMotherboard::correlateLCTsGEM(const CSCCLCTDigi& CLCT,
     dropLowQualityCLCT = drop_low_quality_clct_me1a_;
 
   if (!CLCT.isValid() or (CLCT.getQuality() <= 3 and dropLowQualityCLCT)) {
-    // edm::LogError("CSCGEMMotherboard") << "Best CLCT invalid in correlateLCTsGEM!";
+    LogTrace("CSCGEMMotherboard") << "Best CLCT invalid in correlateLCTsGEM";
     return;
   }
 
@@ -464,7 +489,7 @@ void CSCGEMMotherboard::correlateLCTsGEM(const CSCALCTDigi& ALCT,
                                          CSCCorrelatedLCTDigi& lct) const {
   // Sanity checks on ALCT, GEM clusters
   if (!ALCT.isValid() or (ALCT.getQuality() == 0 and drop_low_quality_alct_)) {
-    // edm::LogError("CSCGEMMotherboard") << "Best ALCT invalid in correlateLCTsGEM!";
+    LogTrace("CSCGEMMotherboard") << "Best ALCT invalid in correlateLCTsGEM";
     return;
   }
 
