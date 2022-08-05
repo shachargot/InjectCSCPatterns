@@ -24,7 +24,7 @@ scram b -j 9
   ```
   cd L1Trigger/CSCTriggerPrimitives/test
   rm ComparatorDigi_CLCT_ME*.txt
-  cmsRun runCSCTriggerPrimitiveProducer_cfg.py mc=True run3=True inputFiles="file:/eos/user/t/tahuang/RelValSamples/CMSSW_12_4_0_pre3/27a95851-6358-485b-b15b-619f3404d795.root" maxEvents=10 saveEdmOutput=False l1=True runME11ILT=True runCCLUTOTMB=True
+  cmsRun runCSCTriggerPrimitiveProducer_cfg.py mc=True run3=True inputFiles="file:/afs/cern.ch/user/t/tahuang/public/RelValSample1000GeVTest/27a95851-6358-485b-b15b-619f3404d795.root" maxEvents=10 saveEdmOutput=False l1=True runME11ILT=True runCCLUTOTMB=True
   ```
 
   
