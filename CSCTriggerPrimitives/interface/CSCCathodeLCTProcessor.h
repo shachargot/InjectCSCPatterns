@@ -93,6 +93,10 @@ public:
   /** Returns shower bits */
   CSCShowerDigi readoutShower() const;
 
+  /** dump comparator digis to txt file **/
+  // PatternInjectionTest print comparator digi
+  void dumpComparatorDigi(std::string filename);
+
 protected:
   /** Best LCT in this chamber, as found by the processor. */
   CSCCLCTDigi bestCLCT[CSCConstants::MAX_CLCT_TBINS];
