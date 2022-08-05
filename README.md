@@ -20,6 +20,7 @@ scram b -j 9
   - step3: run CSC L1 trigger emulation to get txt file. Replace the inputFiles with sample you want to process and set maxEvents to the number of events you need
   ```
   cd L1Trigger/CSCTriggerPrimitives/test
+  rm ComparatorDigi_CLCT_ME*.txt
   cmsRun runCSCTriggerPrimitiveProducer_cfg.py mc=True run3=True inputFiles="file:/eos/user/t/tahuang/RelValSamples/CMSSW_12_4_0_pre3/27a95851-6358-485b-b15b-619f3404d795.root" maxEvents=10 saveEdmOutput=False l1=True runME11ILT=True runCCLUTOTMB=True
   ```
 
@@ -29,11 +30,14 @@ The output files generated from CSC L1 trigger emulator include:
   - ComparatorDigi_CLCT_ME21.txt for ME21 chamber type, with CCLUT on
   - ComparatorDigi_CLCT_ME3141.txt for ME3141 chamber type, with CCLUT on
 
-Everytime you run above program, the it would append the new printouts to the exist output files. Make sure that old files are removed 
+Three example txt files from 10 events are included under data/
+
+Everytime you run above program,  it would append the new printouts to the exist output files. Make sure that old files are removed if you want to creat new txt files
 
 ## Txt file from CSC L1 trigger emulator conventions
+The typical printout from one chamber with comparator digi is showed in the following:
 
-start with "CSCChamber with Comparatordigi:" + detector information
+Start with "CSCChamber with Comparatordigi:" + detector information (endcap=1 means postive endcap and =2 means negative endcap)
 >```
 >CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 2, 1, 7  
 >```
