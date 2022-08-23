@@ -11,6 +11,8 @@ cd CMSSW_12_5_0_pre4/src
 cmsenv
 git cms-addpkg L1Trigger/CSCTriggerPrimitives
   ```
+  Here is the link to CSCTrigger emulator in CMSSW:  https://github.com/cms-sw/cmssw/tree/master/L1Trigger/CSCTriggerPrimitives
+  And here is the part for CLCT emulation: https://github.com/cms-sw/cmssw/blob/master/L1Trigger/CSCTriggerPrimitives/src/CSCCathodeLCTProcessor.cc 
   - step2: apply the changes to CSC L1 trigger emulator and compile cmssw. 
   ```
 git clone https://github.com/tahuang1991/InjectCSCPatterns.git
