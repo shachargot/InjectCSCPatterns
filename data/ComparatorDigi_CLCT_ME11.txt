@@ -99,6 +99,9 @@ CSC CLCT #2: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 5 C
  Slope = 0 CFEB = 0 Strip = 28 KeyHalfStrip = 28 KeyQuartStrip = 57 KeyEighthStrip = 115
 CSC CLCT #1: Valid = 1 BX = 8 Run-2 Pattern = 5 Run-3 Pattern = 1 Quality = 6 Comp Code 2815 Bend = 1
  Slope = 11 CFEB = 1 Strip = 24 KeyHalfStrip = 56 KeyQuartStrip = 112 KeyEighthStrip = 225
+GEMCluster in GE11 layer1: bx 8 gemPad 26 size 3 roll 6 converted into CSC coordination: wiregroup 15 halfstrip 21
+GEMCluster in GE11 layer1: bx 8 gemPad 87 size 2 roll 6 converted into CSC coordination: wiregroup 15 halfstrip 58
+GEMCluster in GE11 layer2: bx 8 gemPad 43 size 3 roll 6 converted into CSC coordination: wiregroup 15 halfstrip 31
 CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 3 Run-3 Pattern = 1 Quality = 7 Bend = 1 Slope = 13
  KeyHalfStrip = 56 KeyQuartStrip = 112 KeyEighthStrip = 225 KeyWireGroup = 12 Type (SIM) = 3 MPC Link = 0
 CSC LCT #2: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 3 Bend = 0 Slope = 0
@@ -138,6 +141,8 @@ Comparatordigi BX 8 Layer 2 halfstrip 53
 Comparatordigi BX 8 Layer 5 halfstrip 53
 CSC CLCT #1: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 6 Comp Code 4095 Bend = 1
  Slope = 0 CFEB = 1 Strip = 21 KeyHalfStrip = 53 KeyQuartStrip = 106 KeyEighthStrip = 213
+GEMCluster in GE11 layer1: bx 8 gemPad 98 size 4 roll 6 converted into CSC coordination: wiregroup 14 halfstrip 61
+GEMCluster in GE11 layer1: bx 8 gemPad 112 size 2 roll 6 converted into CSC coordination: wiregroup 14 halfstrip 53
 CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 5 Bend = 0 Slope = 0
  KeyHalfStrip = 53 KeyQuartStrip = 106 KeyEighthStrip = 213 KeyWireGroup = 20 Type (SIM) = 2 MPC Link = 0
 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 5
@@ -167,6 +172,8 @@ CSC CLCT #1: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 5 C
  Slope = 1 CFEB = 2 Strip = 8 KeyHalfStrip = 72 KeyQuartStrip = 145 KeyEighthStrip = 291
 CSC CLCT #2: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 4 Comp Code 1732 Bend = 1
  Slope = 0 CFEB = 3 Strip = 15 KeyHalfStrip = 111 KeyQuartStrip = 222 KeyEighthStrip = 444
+GEMCluster in GE11 layer1: bx 8 gemPad 96 size 2 roll 4 converted into CSC coordination: wiregroup 21 halfstrip 63
+GEMCluster in GE11 layer2: bx 8 gemPad 108 size 2 roll 5 converted into CSC coordination: wiregroup 18 halfstrip 56
 CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 7 Bend = 0 Slope = 0
  KeyHalfStrip = 72 KeyQuartStrip = 145 KeyEighthStrip = 291 KeyWireGroup = 24 Type (SIM) = 3 MPC Link = 0
 CSC LCT #2: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 3 Bend = 1 Slope = 0
@@ -192,6 +199,7 @@ CSC CLCT #2: Valid = 1 BX = 6 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 5 C
  Slope = 1 CFEB = 1 Strip = 4 KeyHalfStrip = 36 KeyQuartStrip = 72 KeyEighthStrip = 145
 CSC CLCT #1: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 5 Comp Code 1591 Bend = 0
  Slope = 1 CFEB = 1 Strip = 4 KeyHalfStrip = 36 KeyQuartStrip = 72 KeyEighthStrip = 145
+GEMCluster in GE11 layer2: bx 8 gemPad 63 size 2 roll 5 converted into CSC coordination: wiregroup 18 halfstrip 84
 CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 3 Bend = 0 Slope = 1
  KeyHalfStrip = 36 KeyQuartStrip = 72 KeyEighthStrip = 145 KeyWireGroup = 23 Type (SIM) = 1 MPC Link = 0
 CSC LCT #2: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 2 Bend = 0 Slope = 0

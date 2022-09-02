@@ -138,6 +138,19 @@ void CSCGEMMotherboard::run(const CSCWireDigiCollection* wiredc,
   if (theRing == 1){
       std::ofstream myfile;
       myfile.open(outfile.c_str(), std::ios::ate | std::ios::app);
+      //look at gem bx range [-6, 6]
+      for (int bx_gem = 0; bx_gem < CSCConstants::MAX_ALCT_TBINS; bx_gem++) {
+         auto clustersGEM = clusterProc_->getClusters(bx_gem, GEMClusterProcessor::SingleClusters);
+          if (!clustersGEM.empty()) {
+              for (const auto& cl : clustersGEM){
+                  if (cl.cl1().isValid()) 
+                      myfile <<"GEMCluster in GE11 layer1: bx "<< bx_gem <<" gemPad "<< (cl.cl1().pads()).at(0) <<" size "<< (cl.cl1().pads()).size() << " roll "<< cl.roll1() <<" converted into CSC coordination: wiregroup "<< int(cl.layer1_min_wg()*0.5+cl.layer1_min_wg()*0.5)<<" halfstrip " << cl.getKeyStrip(2, false)<< std::endl;
+                  else if (cl.cl2().isValid()) 
+                      myfile <<"GEMCluster in GE11 layer2: bx "<< bx_gem <<" gemPad "<< (cl.cl2().pads()).at(0) <<" size "<< (cl.cl2().pads()).size() << " roll "<< cl.roll2() <<" converted into CSC coordination: wiregroup "<< int(cl.layer2_min_wg()*0.5+cl.layer2_min_wg()*0.5)<<" halfstrip " << cl.getKeyStrip(2, true)<< std::endl;
+              }
+          }
+
+      }
       for (auto lct : lctV) myfile << lct << std::endl;
       myfile.close();
   }
