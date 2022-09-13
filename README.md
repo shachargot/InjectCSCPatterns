@@ -22,7 +22,7 @@ cp InjectCSCPatterns/CSCTriggerPrimitives/interface/*  L1Trigger/CSCTriggerPrimi
 scram b -j 9
   ```
   One thing worth attention is that the above commands are to over-write the old files in L1Trigger/CSCTriggerPrimitives.  If L1Trigger/CSCTriggerPrimitives package is updated with some changes that InjectCSCPatterns/CSCTriggerPrimitives does not include, then over-write the old files may not work.  
-  The safe way to include printout code is applying the printout code changes to L1Trigger/CSCTriggerPrimitives by hand. The printout code changes is summarized in commit [a881941d8b459926564a0873621c55aae9090ca0](https://github.com/tahuang1991/InjectCSCPatterns/commit/a881941d8b459926564a0873621c55aae9090ca0).  What you need to do is apply the changes in CSCTriggerPrimitives/interface/CSCCathodeLCTProcessor.h, CSCTriggerPrimitives/src/CSCCathodeLCTProcessor.cc, CSCTriggerPrimitives/src/CSCMotherboard.cc, CSCTriggerPrimitives/src/CSCGEMMotherboard.cc to the corresponding files under L1Trigger/CSCTriggerPrimitives/
+  
   - step3: run CSC L1 trigger emulation to get txt file. Replace the inputFiles with sample you want to process and set maxEvents to the number of events you need
   ```
   cd L1Trigger/CSCTriggerPrimitives/test
@@ -39,6 +39,15 @@ The output files generated from CSC L1 trigger emulator include:
 Three example txt files from 10 events are included under data/
 
 Everytime you run above program,  it would append the new printouts to the exist output files. Make sure that old files are removed if you want to creat new txt files
+
+#### Files changed to print out comparator digis, GEM clusters, CLCT and LCTs
+The printout code changes is summarized in the following commits:
+  -  [a881941d8b459926564a0873621c55aae9090ca0](https://github.com/tahuang1991/InjectCSCPatterns/commit/a881941d8b459926564a0873621c55aae9090ca0)
+  -  [c3fd3ace655739a7d86e099e63b35dc412310338](https://github.com/tahuang1991/InjectCSCPatterns/commit/c3fd3ace655739a7d86e099e63b35dc412310338)
+ 
+The safe way to include printout code is applying the printout code changes to L1Trigger/CSCTriggerPrimitives by hand.The reason is because with newer CMSSW version, the CSC trigger emulator code might be modified for other reasons and you do not want to overwrite these changes.
+
+What you need to do is apply the changes in CSCTriggerPrimitives/interface/CSCCathodeLCTProcessor.h, CSCTriggerPrimitives/src/CSCCathodeLCTProcessor.cc, CSCTriggerPrimitives/src/CSCMotherboard.cc, CSCTriggerPrimitives/src/CSCGEMMotherboard.cc to the corresponding files under L1Trigger/CSCTriggerPrimitives/
 
 ## Txt file from CSC L1 trigger emulator conventions
 The typical printout for one chamber with comparator digi from one event is showed in the following:
@@ -62,6 +71,13 @@ CLCT part: CLCTs in this chamber, up to two CLCTs per BX, ranked by BX
 >```
 >CSC CLCT #1: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 6 Comp Code 4095 Bend = 1  
 >Slope = 0 CFEB = 2 Strip = 2 KeyHalfStrip = 66 KeyQuartStrip = 132 KeyEighthStrip = 265
+>```
+
+GEM clusters from GE11 in same endcap and with same chamber number as CSC: ranked by layer and BX
+>```
+>GEMCluster in GE11 layer1: bx 8 gemPad 26 size 3 roll 6 converted into CSC coordination: wiregroup 15 halfstrip 21
+>GEMCluster in GE11 layer1: bx 8 gemPad 87 size 2 roll 6 converted into CSC coordination: wiregroup 15 halfstrip 58
+>GEMCluster in GE11 layer2: bx 8 gemPad 43 size 3 roll 6 converted into CSC coordination: wiregroup 15 halfstrip 31
 >```
 
 LCT part: LCTs in this chamber, up to two LCTs per BX,  ranked by BX
