@@ -187,3 +187,7 @@ Edm command is used to check what is inside sample root file:
 ```
 edmEventSize -a -v step2.root
 ```
+
+## Twiki for documenting the samples
+
+https://github.com/tahuang1991/InjectCSCPatterns/wiki/Twiki-for-Muon-Samples
