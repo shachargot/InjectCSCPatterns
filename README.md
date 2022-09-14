@@ -27,7 +27,9 @@ scram b -j 9
   ```
   cd L1Trigger/CSCTriggerPrimitives/test
   rm ComparatorDigi_CLCT_ME*.txt
-  cmsRun runCSCTriggerPrimitiveProducer_cfg.py mc=True run3=True inputFiles="file:/afs/cern.ch/user/t/tahuang/public/RelValSample1000GeVTest/27a95851-6358-485b-b15b-619f3404d795.root" maxEvents=10 saveEdmOutput=False l1=True runME11ILT=True runCCLUTOTMB=True
+  cmsRun runCSCTriggerPrimitiveProducer_cfg.py mc=True run3=True \
+  inputFiles="file:/afs/cern.ch/user/t/tahuang/public/RelValSample1000GeVTest/27a95851-6358-485b-b15b-619f3404d795.root" \
+  maxEvents=10 saveEdmOutput=False l1=True runME11ILT=True runCCLUTOTMB=True
   ```
 
   
@@ -99,7 +101,10 @@ cmsDriver is in this twiki: https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGui
 ### step1: GEN-SIM
 First step is to generate muon particles from physics process or muon gun and then do Geant4 detector simuation. The following cmsDriver command is used to generate the cmsRun configuration to generate muon partilces from muon gun with fixed pt 10GeV and abosulate eta less than 2.8 plus detector simulation step:
 ```
-cmsDriver.py SingleMuPt10_Eta2p85_cfi --beamspot Run3RoundOptics25ns13TeVLowSigmaZ --conditions auto:phase1_2022_realistic --datatier GEN-SIM --era Run3 --eventcontent FEVTDEBUG --fileout file:step1.root --geometry DB:Extended --nStreams 2 --nThreads 8 --no_exec --number 10 --python_filename step_1_cfg.py --step GEN,SIM
+cmsDriver.py SingleMuPt10_Eta2p85_cfi --beamspot Run3RoundOptics25ns13TeVLowSigmaZ \
+--conditions auto:phase1_2022_realistic --datatier GEN-SIM --era Run3 \
+--eventcontent FEVTDEBUG --fileout file:step1.root --geometry DB:Extended \
+--nStreams 2 --nThreads 8 --no_exec --number 10 --python_filename step_1_cfg.py --step GEN,SIM
 ```
    - SingleMuPt10_Eta2p85_cfi is taken from standard cmssw gerenerator fragment under Configuration/Generator/python
    - the steps included GEN and SIM
@@ -128,7 +133,10 @@ process = randomizeMuonGunEndcap(process)
  
  The second step is to do digitiztion and L1 trigger emulation and the following is the cmsDriver command to generate cmsRun configuration
  ```
-cmsDriver.py step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DIGI --era Run3 --eventcontent FEVTDEBUGHLT --filein file:step1.root --fileout file:step2.root --geometry DB:Extended --nStreams 2 --nThreads 8 --no_exec --number 10 --python_filename step_2_cfg.py --step DIGI:pdigi_valid,L1
+cmsDriver.py step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DIGI --era Run3 \
+--eventcontent FEVTDEBUGHLT --filein file:step1.root --fileout file:step2.root \
+--geometry DB:Extended --nStreams 2 --nThreads 8 --no_exec --number 10 \
+--python_filename step_2_cfg.py --step DIGI:pdigi_valid,L1
  ```
   - Here the steps include pdigi_valid, L1, which represents the digitization and L1 emulation
   - datatier is GEN-SIM-DIGI
@@ -152,7 +160,12 @@ cmsDriver.py step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DI
  
  The cmsDriver command to generate sample with Run3 PU settings in the DIGI step:
  ```
- cmsDriver.py step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DIGI --era Run3 --eventcontent FEVTDEBUGHLT --filein file:step1.root --fileout file:step2_PU.root --geometry DB:Extended --nStreams 2 --nThreads 8 --no_exec --number 10 --pileup Run3_Flat55To75_PoissonOOTPU --pileup_input das:/RelValMinBias_14TeV/CMSSW_12_2_0_pre3-122X_mcRun3_2021_realistic_v5-v1/GEN-SIM --python_filename step_2_Run3PU_cfg.py --step DIGI:pdigi_valid,L1
+ cmsDriver.py step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DIGI --era Run3 \
+ --eventcontent FEVTDEBUGHLT --filein file:step1.root --fileout file:step2_PU.root \
+ --geometry DB:Extended --nStreams 2 --nThreads 8 --no_exec --number 10 \
+ --pileup Run3_Flat55To75_PoissonOOTPU \
+ --pileup_input das:/RelValMinBias_14TeV/CMSSW_12_2_0_pre3-122X_mcRun3_2021_realistic_v5-v1/GEN-SIM \
+ --python_filename step_2_Run3PU_cfg.py --step DIGI:pdigi_valid,L1
  ```
   - pileup configuration is Run3_Flat55To75_PoissonOOTPU
   - datapath for pileup samples (also called minibias sample): /RelValMinBias_14TeV/CMSSW_12_2_0_pre3-122X_mcRun3_2021_realistic_v5-v1/GEN-SIM
