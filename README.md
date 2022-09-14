@@ -150,6 +150,18 @@ cmsDriver.py step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DI
  ### pileup mixing 
  Here is the twiki to explain the pileup and how to mix pileups with events: https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideFastSimPileUp
  
+ The cmsDriver command to generate sample with Run3 PU settings in the DIGI step:
+ ```
+ cmsDriver.py step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DIGI --era Run3 --eventcontent FEVTDEBUGHLT --filein file:step1.root --fileout file:step2_PU.root --geometry DB:Extended --nStreams 2 --nThreads 8 --no_exec --number 10 --pileup Run3_Flat55To75_PoissonOOTPU --pileup_input das:/RelValMinBias_14TeV/CMSSW_12_2_0_pre3-122X_mcRun3_2021_realistic_v5-v1/GEN-SIM --python_filename step_2_Run3PU_cfg.py --step DIGI:pdigi_valid,L1
+ ```
+  - pileup configuration is Run3_Flat55To75_PoissonOOTPU
+  - datapath for pileup samples (also called minibias sample): /RelValMinBias_14TeV/CMSSW_12_2_0_pre3-122X_mcRun3_2021_realistic_v5-v1/GEN-SIM
+  - the cmsRun configuration file is step_2_Run3PU_cfg.py and the output file from this configuration is step2_PU.root
+  
+ The minibias sample can be found on [CMSDAS](https://cmsweb.cern.ch/das/) by searching the key word like "dataset= /RelValMinBias_14TeV/CMSSW_12*mcRun3*/GEN-SIM" and here is the link for [avaialble run3 minibsas samples produced through CMS RelVal](https://cmsweb.cern.ch/das/request?input=dataset%3D+%2FRelValMinBias_14TeV%2FCMSSW_12%2AmcRun3%2A%2FGEN-SIM&instance=prod/global&idx=50&limit=50)
+ 
+ Also keep in mind that running the step2 configuration with PU would take much longer time than with the one without PU as mixing PU events requires much more memory and CPU time. 
+ 
  
  ### crab
  Crab is the system to submit jobs to remote sites to produce the huge amount samples.  The twikis for crab are https://twiki.cern.ch/twiki/bin/view/CMSPublic/CRAB3ConfigurationFile and https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookCRAB3Tutorial.
