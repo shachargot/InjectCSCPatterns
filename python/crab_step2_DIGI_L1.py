@@ -23,9 +23,10 @@ config.Data.splitting = 'FileBased'
 config.Data.unitsPerJob = 1
 #config.Data.unitsPerJob = 100
 #config.Data.totalUnits = 2000
+config.Data.publication = True
+config.Data.outputDatasetTag = config.General.requestName
 username = "tahuang" ## replaced with your lxplus user name
 config.Data.outLFNDirBase = '/store/user/%s/CSCEmulation/%s/'%(username, config.General.requestName)
-config.Data.publication = False
 config.section_("Site")
 config.Site.storageSite = "T3_CH_CERNBOX" ## or T3_US_FNALLPC
 
