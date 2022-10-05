@@ -190,6 +190,7 @@ void CSCCathodeLCTProcessor::dumpComparatorDigi(std::string filename){
                   //if (!halfStripTimes[i_layer][hs].empty() && halfStripTimes[i_layer][hs][0] == bx){
                   if (std::find(halfStripTimes[i_layer][hs].begin(), halfStripTimes[i_layer][hs].end(), bx) != halfStripTimes[i_layer][hs].end()){
                       if (!hasDigi){
+                          myfile << "Run "<< runNumber_ <<" Event "<< evtNumber_ << " ";
                           myfile <<"CSCChamber with Comparatordigi: (end,station,ring,chamber) = "<< theEndcap 
                               <<", "<< theStation<<", "<< theRing <<", "<< theChamber << std::endl;
                           hasDigi = true;

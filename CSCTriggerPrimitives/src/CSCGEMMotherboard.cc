@@ -89,6 +89,11 @@ void CSCGEMMotherboard::run(const CSCWireDigiCollection* wiredc,
   alctProc->setCSCGeometry(cscGeometry_);
   clctProc->setCSCGeometry(cscGeometry_);
 
+  alctProc->setRunNumber(runNumber_);
+  alctProc->setEventNumber(evtNumber_);
+  clctProc->setRunNumber(runNumber_);
+  clctProc->setEventNumber(evtNumber_);
+
   // set CCLUT parameters if necessary
   if (runCCLUT_) {
     clctProc->setESLookupTables(lookupTableCCLUT_);

@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DIGI --era Run3 --eventcontent FEVTDEBUGHLT --filein file:_placeholder_.root --fileout file:step2.root --geometry DB:Extended --nStreams 2 --nThreads 8 --no_exec --number 10 --python_filename step_2_cfg.py --step DIGI:pdigi_valid,L1
+# with command line options: step2 --conditions auto:phase1_2022_realistic --datatier GEN-SIM-DIGI --era Run3 --eventcontent FEVTDEBUGHLT --filein file:step1.root --fileout file:step2.root --geometry DB:Extended --nStreams 2 --nThreads 8 --no_exec --number 10 --python_filename step_2_cfg.py --step DIGI:pdigi_valid,L1
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Eras.Era_Run3_cff import Run3

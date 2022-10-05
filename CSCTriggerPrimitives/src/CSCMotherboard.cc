@@ -145,6 +145,11 @@ void CSCMotherboard::run(const CSCWireDigiCollection* wiredc, const CSCComparato
   alctProc->setCSCGeometry(cscGeometry_);
   clctProc->setCSCGeometry(cscGeometry_);
 
+  alctProc->setRunNumber(runNumber_);
+  alctProc->setEventNumber(evtNumber_);
+  clctProc->setRunNumber(runNumber_);
+  clctProc->setEventNumber(evtNumber_);
+
   // Step 2b: encode high multiplicity bits (independent of LCT construction)
   encodeHighMultiplicityBits();
 
