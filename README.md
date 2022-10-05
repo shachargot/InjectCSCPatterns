@@ -190,6 +190,14 @@ Edm command is used to check what is inside sample root file:
 edmEventSize -a -v step2.root
 ```
 
+
+## CSC event display
+The package used for CSC event display is here: https://github.com/tahuang1991/gifDisplay
+
+CSC event display requires the run number (which is always 1 for MC sample), event number and chamber number as inputs
+and then produces display plots. 
+
+
 ## Twiki for documenting the samples
 
 https://github.com/tahuang1991/InjectCSCPatterns/wiki/Twiki-for-Muon-Samples
