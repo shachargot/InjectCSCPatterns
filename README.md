@@ -120,7 +120,7 @@ cmsDriver.py SingleMuPt10_Eta2p85_cfi --beamspot Run3RoundOptics25ns13TeVLowSigm
 --eventcontent FEVTDEBUG --fileout file:step1.root --geometry DB:Extended \
 --nStreams 2 --nThreads 8 --no_exec --number 10 --python_filename step_1_cfg.py --step GEN,SIM
 ```
-   - SingleMuPt10_Eta2p85_cfi is taken from standard cmssw gerenerator fragment under Configuration/Generator/python
+   - SingleMuPt10_Eta2p85_cfi is taken from standard cmssw gerenerator fragment under Configuration/Generator/python. https://github.com/cms-sw/cmssw/tree/master/Configuration/Generator/python
    - the steps included GEN and SIM
    - datatier is GEN-SIM, which would collections related to GEN-SIM by default
    - beamspot is current default Run3 beam spot condition
