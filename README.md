@@ -18,7 +18,8 @@ git cms-addpkg L1Trigger/CSCTriggerPrimitives
   ```
 git clone https://github.com/tahuang1991/InjectCSCPatterns.git
 cp InjectCSCPatterns/CSCTriggerPrimitives/src/* L1Trigger/CSCTriggerPrimitives/src/
-cp InjectCSCPatterns/CSCTriggerPrimitives/interface/*  L1Trigger/CSCTriggerPrimitives/interface
+cp InjectCSCPatterns/CSCTriggerPrimitives/interface/*  L1Trigger/CSCTriggerPrimitives/interface/
+cp InjectCSCPatterns/CSCTriggerPrimitives/plugins/* L1Trigger/CSCTriggerPrimitives/plugins/
 scram b -j 9
   ```
   One thing worth attention is that the above commands are to over-write the old files in L1Trigger/CSCTriggerPrimitives.  If L1Trigger/CSCTriggerPrimitives package is updated with some changes that InjectCSCPatterns/CSCTriggerPrimitives does not include, then over-write the old files may not work.  
@@ -46,17 +47,18 @@ Everytime you run above program,  it would append the new printouts to the exist
 The printout code changes is summarized in the following commits:
   -  [a881941d8b459926564a0873621c55aae9090ca0](https://github.com/tahuang1991/InjectCSCPatterns/commit/a881941d8b459926564a0873621c55aae9090ca0)
   -  [c3fd3ace655739a7d86e099e63b35dc412310338](https://github.com/tahuang1991/InjectCSCPatterns/commit/c3fd3ace655739a7d86e099e63b35dc412310338)
+  -  [e72bbca7013ad13fc0eec6d379f82c43af95df51](https://github.com/tahuang1991/InjectCSCPatterns/commit/e72bbca7013ad13fc0eec6d379f82c43af95df51)
  
 The safe way to include printout code is applying the printout code changes to L1Trigger/CSCTriggerPrimitives by hand.The reason is because with newer CMSSW version, the CSC trigger emulator code might be modified for other reasons and you do not want to overwrite these changes.
 
-What you need to do is apply the changes in CSCTriggerPrimitives/interface/CSCCathodeLCTProcessor.h, CSCTriggerPrimitives/src/CSCCathodeLCTProcessor.cc, CSCTriggerPrimitives/src/CSCMotherboard.cc, CSCTriggerPrimitives/src/CSCGEMMotherboard.cc to the corresponding files under L1Trigger/CSCTriggerPrimitives/
+What you need to do is apply the changes in CSCTriggerPrimitives/interface/CSCCathodeLCTProcessor.h, CSCTriggerPrimitives/interface/CSCBaseboard.h,CSCTriggerPrimitives/interface/CSCTriggerPrimitivesBuilder.h, CSCTriggerPrimitives/src/CSCCathodeLCTProcessor.cc, CSCTriggerPrimitives/src/CSCMotherboard.cc, CSCTriggerPrimitives/src/CSCGEMMotherboard.cc, CSCTriggerPrimitives/src/CSCTriggerPrimitivesBuilder.cc, CSCTriggerPrimitives/plugins/CSCTriggerPrimitivesProducer.cc to the corresponding files under L1Trigger/CSCTriggerPrimitives/
 
 ## Conventions of txt file generated from CSC L1 trigger emulator
 The typical printout for one chamber with comparator digi from one event is showed in the following:
 
-Start with "CSCChamber with Comparatordigi:" + detector information (endcap=1 means postive endcap and =2 means negative endcap)
+Start with "Run number + Event number + CSCChamber with Comparatordigi:" + detector information (endcap=1 means postive endcap and =2 means negative endcap)
 >```
->CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 2, 1, 7  
+>Run 1 Event 2006 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 7 
 >```
 
 Comparator digi part: ranked by BX and layer
