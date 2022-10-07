@@ -1,4 +1,4 @@
-CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 1, 1, 34
+Run 1 Event 2002 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 1, 1, 34
 Comparatordigi BX 3 Layer 1 halfstrip 89
 Comparatordigi BX 4 Layer 0 halfstrip 77
 Comparatordigi BX 4 Layer 2 halfstrip 88
@@ -57,7 +57,7 @@ CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 8 Run-3 Pattern = 2 Quality = 3 Ben
  KeyHalfStrip = 104 KeyQuartStrip = 209 KeyEighthStrip = 419 KeyWireGroup = 12 Type (SIM) = 1 MPC Link = 0
 CSC LCT #2: Valid = 1 BX = 8 Run-2 Pattern = 6 Run-3 Pattern = 2 Quality = 3 Bend = 0 Slope = 6
  KeyHalfStrip = 61 KeyQuartStrip = 123 KeyEighthStrip = 247 KeyWireGroup = 12 Type (SIM) = 1 MPC Link = 0
-CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 16
+Run 1 Event 2002 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 16
 Comparatordigi BX 6 Layer 0 halfstrip 38
 Comparatordigi BX 6 Layer 0 halfstrip 45
 Comparatordigi BX 6 Layer 1 halfstrip 22
@@ -106,7 +106,7 @@ CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 3 Run-3 Pattern = 1 Quality = 7 Ben
  KeyHalfStrip = 56 KeyQuartStrip = 112 KeyEighthStrip = 225 KeyWireGroup = 12 Type (SIM) = 3 MPC Link = 0
 CSC LCT #2: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 3 Bend = 0 Slope = 0
  KeyHalfStrip = 28 KeyQuartStrip = 57 KeyEighthStrip = 115 KeyWireGroup = 12 Type (SIM) = 1 MPC Link = 0
-CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 1, 1, 13
+Run 1 Event 2003 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 1, 1, 13
 Comparatordigi BX 6 Layer 4 halfstrip 109
 Comparatordigi BX 7 Layer 0 halfstrip 103
 Comparatordigi BX 7 Layer 4 halfstrip 102
@@ -121,7 +121,7 @@ CSC CLCT #1: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 6 C
  Slope = 2 CFEB = 3 Strip = 7 KeyHalfStrip = 103 KeyQuartStrip = 206 KeyEighthStrip = 412
 CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 7 Bend = 0 Slope = 0
  KeyHalfStrip = 103 KeyQuartStrip = 206 KeyEighthStrip = 412 KeyWireGroup = 37 Type (SIM) = 3 MPC Link = 0
-CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 31
+Run 1 Event 2003 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 31
 Comparatordigi BX 6 Layer 4 halfstrip 23
 Comparatordigi BX 7 Layer 0 halfstrip 23
 Comparatordigi BX 7 Layer 1 halfstrip 23
@@ -132,7 +132,7 @@ CSC CLCT #1: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 6 C
  Slope = 0 CFEB = 0 Strip = 23 KeyHalfStrip = 23 KeyQuartStrip = 46 KeyEighthStrip = 93
 CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 7 Bend = 0 Slope = 0
  KeyHalfStrip = 23 KeyQuartStrip = 46 KeyEighthStrip = 93 KeyWireGroup = 37 Type (SIM) = 3 MPC Link = 0
-CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 1, 1, 23
+Run 1 Event 2005 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 1, 1, 23
 Comparatordigi BX 7 Layer 0 halfstrip 53
 Comparatordigi BX 7 Layer 1 halfstrip 53
 Comparatordigi BX 7 Layer 3 halfstrip 53
@@ -145,7 +145,7 @@ GEMCluster in GE11 layer1: bx 8 gemPad 98 size 4 roll 6 converted into CSC coord
 GEMCluster in GE11 layer1: bx 8 gemPad 112 size 2 roll 6 converted into CSC coordination: wiregroup 14 halfstrip 53
 CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 5 Bend = 0 Slope = 0
  KeyHalfStrip = 53 KeyQuartStrip = 106 KeyEighthStrip = 213 KeyWireGroup = 20 Type (SIM) = 2 MPC Link = 0
-CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 5
+Run 1 Event 2005 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 5
 Comparatordigi BX 6 Layer 1 halfstrip 73
 Comparatordigi BX 7 Layer 0 halfstrip 73
 Comparatordigi BX 7 Layer 2 halfstrip 74
@@ -156,7 +156,7 @@ CSC CLCT #1: Valid = 1 BX = 7 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 6 C
  Slope = 0 CFEB = 2 Strip = 9 KeyHalfStrip = 73 KeyQuartStrip = 147 KeyEighthStrip = 294
 CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 7 Bend = 0 Slope = 0
  KeyHalfStrip = 73 KeyQuartStrip = 147 KeyEighthStrip = 294 KeyWireGroup = 20 Type (SIM) = 3 MPC Link = 0
-CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 1, 1, 25
+Run 1 Event 2006 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 1, 1, 1, 25
 Comparatordigi BX 6 Layer 3 halfstrip 73
 Comparatordigi BX 7 Layer 0 halfstrip 72
 Comparatordigi BX 7 Layer 1 halfstrip 70
@@ -178,7 +178,7 @@ CSC LCT #1: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 7 Be
  KeyHalfStrip = 72 KeyQuartStrip = 145 KeyEighthStrip = 291 KeyWireGroup = 24 Type (SIM) = 3 MPC Link = 0
 CSC LCT #2: Valid = 1 BX = 8 Run-2 Pattern = 10 Run-3 Pattern = 4 Quality = 3 Bend = 1 Slope = 0
  KeyHalfStrip = 111 KeyQuartStrip = 222 KeyEighthStrip = 444 KeyWireGroup = 24 Type (SIM) = 1 MPC Link = 0
-CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 7
+Run 1 Event 2006 CSCChamber with Comparatordigi: (end,station,ring,chamber) = 2, 1, 1, 7
 Comparatordigi BX 6 Layer 0 halfstrip 55
 Comparatordigi BX 6 Layer 0 halfstrip 56
 Comparatordigi BX 6 Layer 1 halfstrip 55
