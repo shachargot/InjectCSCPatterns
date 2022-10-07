@@ -51,7 +51,17 @@ The printout code changes is summarized in the following commits:
  
 The safe way to include printout code is applying the printout code changes to L1Trigger/CSCTriggerPrimitives by hand.The reason is because with newer CMSSW version, the CSC trigger emulator code might be modified for other reasons and you do not want to overwrite these changes.
 
-What you need to do is apply the changes in CSCTriggerPrimitives/interface/CSCCathodeLCTProcessor.h, CSCTriggerPrimitives/interface/CSCBaseboard.h,CSCTriggerPrimitives/interface/CSCTriggerPrimitivesBuilder.h, CSCTriggerPrimitives/src/CSCCathodeLCTProcessor.cc, CSCTriggerPrimitives/src/CSCMotherboard.cc, CSCTriggerPrimitives/src/CSCGEMMotherboard.cc, CSCTriggerPrimitives/src/CSCTriggerPrimitivesBuilder.cc, CSCTriggerPrimitives/plugins/CSCTriggerPrimitivesProducer.cc to the corresponding files under L1Trigger/CSCTriggerPrimitives/
+What you need to do is apply the changes in 
+  - CSCTriggerPrimitives/interface/CSCCathodeLCTProcessor.h, 
+  - CSCTriggerPrimitives/interface/CSCBaseboard.h,
+  - CSCTriggerPrimitives/interface/CSCTriggerPrimitivesBuilder.h, 
+  - CSCTriggerPrimitives/src/CSCCathodeLCTProcessor.cc, 
+  - CSCTriggerPrimitives/src/CSCMotherboard.cc, 
+  - CSCTriggerPrimitives/src/CSCGEMMotherboard.cc, 
+  - CSCTriggerPrimitives/src/CSCTriggerPrimitivesBuilder.cc, 
+  - CSCTriggerPrimitives/plugins/CSCTriggerPrimitivesProducer.cc 
+  
+to the corresponding files under L1Trigger/CSCTriggerPrimitives/
 
 ## Conventions of txt file generated from CSC L1 trigger emulator
 The typical printout for one chamber with comparator digi from one event is showed in the following:
